@@ -4,7 +4,7 @@
 
    ============================= */
 
-html {
+:root {
     --dark-text: #13381f;
     --light-text: #fcfcfa;
     --cream-text: #f6ead0;

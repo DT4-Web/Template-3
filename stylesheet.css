@@ -21,10 +21,6 @@
 
   (to jump to any section of the Contents, use the section number (e.g. 002) in 'Find', Cmd-F) */
 
-@import url("css/reset.css");
-@import url("css/typography.css");
-@import url("css/colour.css");
-
 /* = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
   
       002.  GENERAL STYLES
@@ -64,8 +60,8 @@ main {
 = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = */
 
 header {
+    position: relative; /* <-- needed so .icon anchors to the header, not the page */
     max-width: 75rem;
-    /* above, same width as the MAIN - 1200px or 75rem */
     margin: 0 auto;
     background-color: var(--header-background);
     padding: 2rem 0 2rem 2rem;
@@ -90,7 +86,7 @@ header h1 {
     display: flex;
     flex-wrap: wrap;
     gap: 0 1rem;
-    z-index: 9999;
+    z-index: 999;
 }
 
 .topnav a {
@@ -108,24 +104,30 @@ header h1 {
 }
 
 .icon {
-    position: absolute;
     display: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
     color: var(--dark-text);
-    font-size: 2rem;
-    text-decoration: none;
-    z-index: 9999;
+    z-index: 999;
 }
 
-@media screen and (max-width: 40em) {
+.icon .material-symbols-outlined {
+    font-size: 2rem;
+    display: block;
+}
+
+/* First breakpoint */
+@media screen and (max-width: 40rem) {
     header {
         padding: 2rem 0 2rem 1rem;
-        height: 4rem;
-    }
-
-    .topnav {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 0.7rem;
+        min-height: 4rem;
     }
 
     .topnav a {
@@ -133,20 +135,13 @@ header h1 {
     }
 
     .icon {
-        float: right;
         display: block;
-        top: 1rem;
-        right: 1rem;
-    }
-}
-
-@media screen and (max-width: 40rem) {
-    header {
-        padding: 2rem 0 2rem 1rem;
-        height: 4rem;
     }
 
     .topnav.responsive {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.7rem;
         position: absolute;
         top: 0;
         right: 0;
@@ -156,19 +151,13 @@ header h1 {
         background-color: var(--slide-out-menu-background);
     }
 
-    .icon {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-    }
-
     .topnav.responsive a {
-        float: none;
         display: block;
         text-align: right;
     }
 }
 
+/* First breakpoint */
 @media screen and (max-width: 26rem) {
     header h1 {
         max-width: 18.75rem;
@@ -176,7 +165,6 @@ header h1 {
     }
 
     header {
-        height: 7.7rem;
         padding-bottom: 0;
     }
 }
